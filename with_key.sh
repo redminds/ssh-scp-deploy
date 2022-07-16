@@ -9,6 +9,7 @@ PRE_UPLOAD=${INPUT_PRE_UPLOAD}
 if [ ! -z "$PRE_UPLOAD" ]; then
     { 
         echo "👌 Executing pre-upload script..." &&
+        echo ${INPUT_SSH_OPTIONS} ${INPUT_PORT} ${INPUT_USER}@${INPUT_HOST}  $INPUT_PRE_UPLOAD &&
         ssh ${INPUT_SSH_OPTIONS} -p ${INPUT_PORT} ${INPUT_USER}@${INPUT_HOST} "$INPUT_PRE_UPLOAD && exit" &&
         echo "✅ Executed pre-upload script"
     } || { 
